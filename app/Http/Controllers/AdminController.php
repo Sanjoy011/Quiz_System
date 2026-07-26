@@ -80,6 +80,9 @@ class AdminController extends Controller
             
 
     }
+    function checkOut(){
+        return "Checkout Histroy";
+    }
 
     
 

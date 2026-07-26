@@ -44,13 +44,14 @@ class AdminController extends Controller
             //coustome validation
             [
                 "user.required" => "User doesn't exist."
+                //comment
             ]
             
         );
         
 
         }else if ($admin->password != $request->password) {  // 1234 != 343
-        
+
                 $request->validate(
                 [
                     "password" => "required",

@@ -75,6 +75,7 @@ class AdminController extends Controller
                 return view('admin',["name"=>$adminUser->name]);  //Left side name = the variable name you want to use in the view Admin.blade.php
             }else{
                 return redirect('admin-login');
+                // page redirect to the dashbord
             }
             
 

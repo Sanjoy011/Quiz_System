@@ -8,8 +8,13 @@ Route::get('/', function () {
 });
 
 //Admin Login with Model-View-Controller 
-Route::view('admin-login','admin-login');
+Route::view('admin-login','1_admin-login');
 Route::post('admin-login',[AdminController::class,'adminlogin']);
 
 //Validation, Session and Dashboard 
-Route::get('dashboard',[AdminController::class,'dashboard']);
+Route::get('admin-home',[AdminController::class,'dashboard']);
+
+//Make Navbar, Logout feature , Category Page
+Route::get('admin-categories',[AdminController::class,'adminCategories']);
+//Admin-logout
+Route::get('admin-logout',[AdminController::class,'adminLogout']);

@@ -25,9 +25,6 @@ class AdminController extends Controller
             ]
         );
 
-
-
-
         //Admin Login with Model-View-Controller
         $admin = Admin::where(
             [
@@ -36,54 +33,49 @@ class AdminController extends Controller
             ])->first();
 
         if (!$admin){
-            
+
             $request->validate(
             [
                 "user" => "required",
             ],
             //coustome validation
             [
-                "user.required" => "User doesn't exist."
+                "user.required" => "Invalid email or password for this portal."
                 //comment
-            ]
-            
+            ]  
         );
-        
-
-        }else if ($admin->password != $request->password) {  // 1234 != 343
-
-                $request->validate(
-                [
-                    "password" => "required",
-                ],
-                [
-                    "password.required" => "Password is wrong. Please enter the correct password."
-                ]
-            );
-
         } else {
-
             Session::put('user', $admin);
-            return redirect('dashboard');
-
+            return redirect('admin-home');
         }
-    }       
+    }    
+
     function dashboard(){
             $adminUser = Session::get('user');
             // return $adminUser->name;  //just check it 
             if($adminUser){
-                return view('admin',["name"=>$adminUser->name]);  //Left side name = the variable name you want to use in the view Admin.blade.php
+                return view('2_adminDeshboard',["name"=>$adminUser->name]);  //Left side name = the variable name you want to use in the view Admin.blade.php
             }else{
                 return redirect('admin-login');
                 
             }
-            
-
-    }
-    function checkOut(){
-        return "Checkout Histroy";
     }
 
+    function adminCategories(){
+            $adminUser = Session::get('user');
+            // return $adminUser->name;  //just check it 
+            if($adminUser){
+                return view('3_admin-categories',["name"=>$adminUser->name]);  //Left side name = the variable name you want to use in the view Admin.blade.php
+            }else{
+                return redirect('admin-login');
+                
+            }
+    }
+    function adminLogout(){
+        Session::forget('user');
+        return redirect('admin-login');
+
+    }
     
 
 }

@@ -12,18 +12,18 @@
             @error('user')
             <div class="text-red-600">{{$message}}</div>
             @enderror
-            <form action="admin-login" method="post" class="space-y-4">
+            <form action="admin-login" method="post" class="space-y-5">
             @csrf
                 <div>
-                    <label for="name" class="text-blue-800 mb-1">Admin name:</label>
-                        <input type="text" name="name" placeholder="Enter admin name" class="w-full px-2 py-1 border border-gray-300 rounded-2xl outline-none text-xs">
+                    <label for="name" class="text-blue-800 mb-1 ps-2 ">Admin name:</label>
+                        <input type="text" name="name" placeholder="Enter your name" class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base">
                         @error('name')
                         <div class="text-red-600">{{$message}}</div>
                         @enderror
                 </div>
                 <div>
-                    <label for="password" class="text-blue-800 mb-1">Password:</label>
-                    <input type="password" name="password" placeholder="Enter admin password" class="w-full px-2 py-1 border border-gray-300 rounded-2xl outline-none text-xs">
+                    <label for="password" class="text-blue-800 mb-1 ps-2">Password:</label>
+                    <input type="password" name="password" placeholder="Enter your password" class="w-full px-2 py-2 border border-gray-300 rounded-2xl outline-none text-base">
                     @error('password')
                     <div class="text-red-600">{{$message}}</div>
                     @enderror

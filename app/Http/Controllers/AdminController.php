@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Admin;
+use App\Models\Categorie;
 
 class AdminController extends Controller
 {
-     
+     //Login page
     function adminlogin(Request $request){
 
         //Validation, Session and Dashboard 
@@ -35,8 +36,8 @@ class AdminController extends Controller
         if (!$admin){
 
             $request->validate(
-            [
-                "user" => "required",
+            [ 
+                "user" => "required"
             ],
             //coustome validation
             [
@@ -48,8 +49,9 @@ class AdminController extends Controller
             Session::put('user', $admin);
             return redirect('admin-home');
         }
-    }    
+    }  
 
+    //HomePage
     function dashboard(){
             $adminUser = Session::get('user');
             // return $adminUser->name;  //just check it 
@@ -61,6 +63,7 @@ class AdminController extends Controller
             }
     }
 
+    //Categories Page modify
     function adminCategories(){
             $adminUser = Session::get('user');
             // return $adminUser->name;  //just check it 
@@ -71,11 +74,30 @@ class AdminController extends Controller
                 
             }
     }
+
+    //Logout page
     function adminLogout(){
         Session::forget('user');
         return redirect('admin-login');
 
     }
+
+    // Add Display Category
+    function addcategories(Request $request){
+        $adminUser = Session::get('user');
+        $category = new Categorie();
+        $category->name=$request->category;
+        $category->creator=$adminUser->name;
+        $category->save();
+
+        if($category){
+            Session::flash('addcategory',"\"".$request->category . "\" was added successfully 🎉");  //addcategory->keys || session message
+        }
+        return redirect('admin-categories');
+            
+    }
+
+    
     
 
 }

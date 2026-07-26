@@ -65,10 +65,11 @@ class AdminController extends Controller
 
     //Categories Page modify
     function adminCategories(){
+            $category = Categorie::get();
             $adminUser = Session::get('user');
             // return $adminUser->name;  //just check it 
             if($adminUser){
-                return view('3_admin-categories',["name"=>$adminUser->name]);  //Left side name = the variable name you want to use in the view Admin.blade.php
+                return view('3_admin-categories',["name"=>$adminUser->name,"categories"=>$category]);  
             }else{
                 return redirect('admin-login');
                 
@@ -91,7 +92,7 @@ class AdminController extends Controller
         $category->save();
 
         if($category){
-            Session::flash('addcategory',"\"".$request->category . "\" was added successfully 🎉");  //addcategory->keys || session message
+            Session::flash('addcategory'," Successfully added the course " .$request->category . "🎉");  //addcategory->keys || session message
         }
         return redirect('admin-categories');
             

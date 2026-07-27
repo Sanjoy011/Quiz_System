@@ -16,19 +16,19 @@
                 @csrf
                     <div>
                         <label for="name" class="text-blue-800 mb-1 ps-2 ">Admin name:</label>
-                            <input type="text" name="name" placeholder="Enter your name" class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base">
+                            <input type="text" name="name" placeholder="Enter your name" class="w-full px-2 py-1.5  border border-gray-300 rounded-2xl outline-none text-base">
                             @error('name')
                             <div class="text-red-600">{{$message}}</div>
                             @enderror
                     </div>
                     <div>
                         <label for="password" class="text-blue-800 mb-1 ps-2">Password:</label>
-                        <input type="password" name="password" placeholder="Enter your password" class="w-full px-2 py-2 border border-gray-300 rounded-2xl outline-none text-base">
+                        <input type="password" name="password" placeholder="Enter your password" class="w-full px-2 py-1.5 border border-gray-300 rounded-2xl outline-none text-base">
                         @error('password')
                         <div class="text-red-600">{{$message}}</div>
                         @enderror
                     </div>
-                        <button type="submit" class="w-full text-center text-white text-base bg-blue-500 rounded-2xl hover:bg-blue-600">Submit</button>
+                        <button type="submit" class="w-full text-center text-white bg-blue-500 rounded-2xl hover:bg-blue-600 py-1.5 text-xl font-normal">Login</button>
                 </form>
             </div>
     </body>

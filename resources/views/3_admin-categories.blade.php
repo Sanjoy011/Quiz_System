@@ -22,7 +22,7 @@
     @if(session('deletecategory'))
         <div class="fixed top-25 right-8 
             bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg 
-            animate-pulse transition-opacity duration-500" id="flashMessage"">{{session('deletecategory')}}</div>
+            animate-pulse transition-opacity duration-500" id="flashMessage">{{session('deletecategory')}}</div>
     @endif
 
 
@@ -47,19 +47,19 @@
             <ul class="border border-gray-300">
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
-                        <li class="w-30">Sl. no</li>
-                        <li class="w-40">Name</li>
-                        <li class="w-30">Creator</li>
-                        <li class="w-30">Action</li> 
+                        <!-- <li class="w-30">Sl. no</li> -->
+                        <li class="w-30">TUTORIALS</li>
+                        <li class="w-10">CREATOR</li>
+                        <li class="w-30">ACTION</li> 
                     </ul>
                 </li>
                 @foreach($categories as $categorie)
                 <li class="even:bg-gray-300 p-2">
                     <ul class="flex justify-around">
-                        <li class="w-30">{{$categorie->id}}</li>
-                        <li class="w-40">{{$categorie->name}}</li>
-                        <li class="w-30">{{$categorie->creator}}</li>
-                        <li class="w-30">
+                        <!-- <li class="w-30">{{$categorie->id}}</li> -->
+                        <li class="w-30">{{$categorie->name}}</li>
+                        <li class="w-10">{{$categorie->creator}}</li>
+                        <li class="w-25">
                             <a href="categories/delete/{{$categorie->id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#EA3323"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg>
                             </a>

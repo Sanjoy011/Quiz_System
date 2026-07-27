@@ -85,6 +85,10 @@ class AdminController extends Controller
 
     // Add Display Category
     function addcategories(Request $request){
+            $request->validate(
+                [
+                    "category" => "required | min:3 | unique:categories,name"  // The category field must be at least 3 characters. | and same name not repete agian. first categories ->table name and after name -> course name identify
+                ]);
         $adminUser = Session::get('user');
         $category = new Categorie();
         $category->name=$request->category;
@@ -96,6 +100,14 @@ class AdminController extends Controller
         }
         return redirect('admin-categories');
             
+    }
+
+    function categoryDeleted($id){
+        $deleteCategory = Categorie::find($id)->delete();
+        if($deleteCategory){
+            Session::flash('deletecategory'," The selected category has been deleted successfully.");
+        }
+        return redirect('admin-categories');
     }
 
     

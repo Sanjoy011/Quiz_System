@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Admin;
 use App\Models\Categorie;
+use App\Models\Result;
 
 class AdminController extends Controller
 {
@@ -109,8 +110,6 @@ class AdminController extends Controller
         }
         return redirect('admin-categories');
     }
-
-    
-    
+   
 
 }

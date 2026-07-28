@@ -42,7 +42,7 @@
             </form>
         </div>
         <div class="w-200">
-            <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium">📚 Course Management List: </h1>
+            <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium">📚 Category List: </h1>
             <!-- add categories table items -->
             <ul class="border border-gray-300">
                 <li class="p-2 font-bold">

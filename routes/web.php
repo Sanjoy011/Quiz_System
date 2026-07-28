@@ -22,3 +22,5 @@ Route::get('admin-logout',[AdminController::class,'adminLogout']);
 Route::post('add-categories',[AdminController::class,'addcategories']);
 //deleted category
 Route::get('categories/delete/{id}',[AdminController::class,'categoryDeleted']);
+//AddQuiz 
+Route::get('add-quiz',[AdminController::class,'addQuiz']);

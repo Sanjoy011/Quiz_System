@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Admin;
 use App\Models\Categorie;
+use App\Models\Result;
 
 class AdminController extends Controller
 {
@@ -109,6 +110,29 @@ class AdminController extends Controller
         }
         return redirect('admin-categories');
     }
+
+    function addQuiz(){
+            $category = Categorie::get();
+            $adminUser = Session::get('user');
+            // return $adminUser->name;  //just check it 
+            if($adminUser){
+                 $quizName=request('quiz');
+                 $category_id=request('category_id');
+
+                if($quizName && $category_id && !Session::has('quizdetails')){ // !Session::has('quizdetails')->যদি quizdetails নামে কোনো তথ্য আগে থেকে Session-এ সংরক্ষিত না থাকে, তাহলে নতুন Quiz তৈরি করে Database-এ Save করবে।
+                    $quiz = new Result();
+                    $quiz->name=$quizName;
+                    $quiz->category_id=$category_id;
+                    if($quiz->save()){
+                        Session::put('quizdetails',$quiz);
+                    }
+                }
+                return view('4_add-quiz',["name"=>$adminUser->name,"categories"=>$category]);  
+            }else{
+                return redirect('admin-login');
+                
+            }
+        }
 
 
 }

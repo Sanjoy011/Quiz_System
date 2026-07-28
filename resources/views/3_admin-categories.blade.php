@@ -47,7 +47,7 @@
             <ul class="border border-gray-300">
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
-                        <!-- <li class="w-30">Sl. no</li> -->
+                        <li class="w-30">Sl. no</li>
                         <li class="w-30">TUTORIALS</li>
                         <li class="w-10">CREATOR</li>
                         <li class="w-30">ACTION</li> 
@@ -56,7 +56,7 @@
                 @foreach($categories as $categorie)
                 <li class="even:bg-gray-300 p-2">
                     <ul class="flex justify-around">
-                        <!-- <li class="w-30">{{$categorie->id}}</li> -->
+                        <li class="w-30">{{$categorie->id}}</li>
                         <li class="w-30">{{$categorie->name}}</li>
                         <li class="w-10">{{$categorie->creator}}</li>
                         <li class="w-25">

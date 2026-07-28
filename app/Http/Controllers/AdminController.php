@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
 use App\Models\Categorie;
 use App\Models\Result;
+use App\Models\Mcq;
 
 class AdminController extends Controller
 {
@@ -88,7 +89,7 @@ class AdminController extends Controller
     function addcategories(Request $request){
             $request->validate(
                 [
-                    "category" => "required | min:3 | unique:categories,name"  // The category field must be at least 3 characters. | and same name not repete agian. first categories ->table name and after name -> course name identify
+                    "category" => "required | min:3 | unique:categories,name"  // The category field must be at least 3 characters. | and same name not repete agian. first categories ->table name and after name -> categories name identify
                 ]);
         $adminUser = Session::get('user');
         $category = new Categorie();
@@ -103,6 +104,7 @@ class AdminController extends Controller
             
     }
 
+    //Category Deleted 
     function categoryDeleted($id){
         $deleteCategory = Categorie::find($id)->delete();
         if($deleteCategory){
@@ -111,6 +113,7 @@ class AdminController extends Controller
         return redirect('admin-categories');
     }
 
+    //Add Quiz 
     function addQuiz(){
             $category = Categorie::get();
             $adminUser = Session::get('user');
@@ -132,6 +135,36 @@ class AdminController extends Controller
                 return redirect('admin-login');
                 
             }
+        }
+
+        //add mcq question
+        function addMcq(Request $request){
+
+            $adminUser=Session::get('user');
+            $quiz = Session::get('quizdetails');
+
+            $addMcq= new Mcq();
+            $addMcq->question=$request->question;
+            $addMcq->option_a=$request->option_a;
+            $addMcq->option_b=$request->option_b;
+            $addMcq->option_c=$request->option_c;
+            $addMcq->option_d=$request->option_d;
+            $addMcq->currect_ans=$request->currect_ans;
+
+            $addMcq->admin_id=$adminUser->id;    
+            $addMcq->category_id=$quiz->category_id;
+            $addMcq->quiz_id=$quiz->id;
+
+
+            if($addMcq->save()){
+                if($request->submit=="add-more"){
+                    return redirect(url()->previous());
+                }else{
+                    Session::forget('quizdetails');
+                    return redirect('/add-quiz');
+                }
+            }
+            // return $request;
         }
 
 

@@ -29,22 +29,22 @@
     <!-- Add categories items -->
     <div class=" bg-gray-100 flex flex-col items-center min-h-screen  pt-8 ">
         <div class=" bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm ">
-                <h1 class="text-2xl text-center text-blue-800 font-medium">➕ Create New Category</h1>
+                <h1 class="text-2xl text-center text-blue-800 font-medium font-serif">➕ Create New Category</h1>
             <form action="/add-categories" method="post" class="space-y-5">
                 @csrf
                     <div>
-                        <input type="text" name="category" placeholder="Enter category name" class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base mt-6">
+                        <input type="text" name="category" placeholder="Enter category name" class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base mt-6 font-serif">
                     </div>
                     @error('category')
                     <div class="text-red-700">{{$message}}</div>
                     @enderror
-                    <button type="submit" class="w-full text-center text-white text-xl bg-blue-500 rounded-2xl hover:bg-blue-600 py-1 font-normal">Add</button>
+                    <button type="submit" class="w-full text-center text-white text-xl bg-blue-500 rounded-2xl hover:bg-blue-600 py-1 font-normal font-serif">Add</button>
             </form>
         </div>
         <div class="w-200">
-            <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium">📚 Category List: </h1>
+            <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium font-serif">📚 Category List: </h1>
             <!-- add categories table items -->
-            <ul class="border border-gray-300">
+            <ul class="border border-gray-300 font-serif">
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
                         <li class="w-30">Sl. no</li>

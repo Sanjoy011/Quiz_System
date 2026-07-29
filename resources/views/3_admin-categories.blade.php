@@ -48,9 +48,9 @@
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
                         <li class="w-30">Sl. no</li>
-                        <li class="w-30">TUTORIALS</li>
-                        <li class="w-10">CREATOR</li>
-                        <li class="w-30">ACTION</li> 
+                        <li class="w-30">Category</li>
+                        <li class="w-10">Creator</li>
+                        <li class="w-30">Action</li> 
                     </ul>
                 </li>
                 @foreach($categories as $categorie)
@@ -71,5 +71,7 @@
             </ul>
         </div>
     </div>
+   
 </body>
 </html> 
+ <x-footer></x-footer>

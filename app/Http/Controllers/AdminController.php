@@ -64,6 +64,11 @@ class AdminController extends Controller
                 
             }
     }
+    //homePage
+    // function dashboardhome(){
+    //     $adminUser = Session::get('user');
+    //     return view('hompage',["name"=>$adminUser->name]);
+    // }
 
     //Categories Page modify
     function adminCategories(){
@@ -140,6 +145,15 @@ class AdminController extends Controller
         //add mcq question
         function addMcq(Request $request){
 
+
+            $request->validate([
+                "question" => "required | min:5 ",
+                "option_a" => "required",
+                "option_b" => "required",
+                "option_c" => "required",
+                "option_d" => "required"
+            ]);
+
             $adminUser=Session::get('user');
             $quiz = Session::get('quizdetails');
 
@@ -161,10 +175,14 @@ class AdminController extends Controller
                     return redirect(url()->previous());
                 }else{
                     Session::forget('quizdetails');
-                    return redirect('/add-quiz');
+                    return redirect('/admin-home');
                 }
             }
-            // return $request;
+        }
+
+        function finishQuiz(){
+            Session::forget('quizdetails');
+            return redirect('/admin-home');
         }
 
 

@@ -35,34 +35,54 @@
                         <div>
                             <textarea type="text" name="question" placeholder="Enter your question " class="w-full px-2 py-2  border border-gray-300 rounded-xl outline-none text-base mt-6 font-serif"></textarea>
                         </div>
+                            @error('question')
+                            <div class="text-red-600">{{$message}}</div>
+                            @enderror
+                        
                         <div>
                             <input type="text" name="option_a" placeholder="Enter First Option" class="w-full px-2 py-1.5  border border-gray-300 rounded-xl outline-none text-sm mt-6 font-serif">
-                        </div>         
+                        </div>
+                        @error('option_a')
+                            <div class="text-red-600">{{$message}}</div>
+                        @enderror         
                         <div>
                             <input type="text" name="option_b" placeholder="Enter Second Option" class="w-full px-2 py-1.5  border border-gray-300 rounded-xl outline-none text-sm mt-6 font-serif">
-                        </div>         
+                        </div>   
+                        @error('option_b')
+                            <div class="text-red-600">{{$message}}</div>
+                        @enderror      
                         <div>
                             <input type="text" name="option_c" placeholder="Enter Third Option" class="w-full px-2 py-1.5  border border-gray-300 rounded-xl outline-none text-sm mt-6 font-serif">
-                        </div>         
+                        </div> 
+                        @error('option_c')
+                            <div class="text-red-600">{{$message}}</div>
+                        @enderror        
                         <div>
                             <input type="text" name="option_d" placeholder="Enter Fourth Option" class="w-full px-2 py-1.5  border border-gray-300 rounded-xl outline-none text-sm mt-6 font-serif">
                         </div>  
+                        @error('option_d')
+                            <div class="text-red-600">{{$message}}</div>
+                        @enderror
                         <div>
                             <select type="text" name="currect_ans" class="w-full px-2 py-1  border border-gray-300 rounded-xl outline-none text-base mt-7 font-serif">
-                               <option>Select Right Answer</option>
-                               <option>A</option>
-                               <option>B</option>
-                               <option>C</option>
-                               <option>D</option>
+                            
+                               <option value="">Select Right Answer</option>
+                               <option value="option-a">A</option>
+                               <option value="option-b">B</option>
+                               <option value="option-c">C</option>
+                               <option value="option-d">D</option>
                             </select>
                         </div> 
                         <button type="submit" name="submit" value="add-more" class="w-full text-center text-white text-base bg-blue-500 rounded-2xl hover:bg-blue-600 py-1.5 font-normal font-serif mt-7">Add More</button>      
                         <button type="submit" name="submit" value="done" class="w-full text-center text-white text-base bg-green-500 rounded-2xl hover:bg-green-600 py-1.5 font-normal font-serif mt-3">Add & Submit</button>      
+                       <a href="/fenish-quiz" class="text-center text-white text-lg font-serif font-medium block bg-red-500 hover:bg-red-600 mt-4 py-1.5 rounded-2xl ">Finish Quix</a>      
                 </form>
             @endif
         </div>
     </div>
+    
 </body>
+<x-footer></x-footer>
 
 <!-- You use if(!session('quizdetails')) to show two different forms on the same page.
 

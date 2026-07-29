@@ -13,7 +13,6 @@ Route::post('admin-login',[AdminController::class,'adminlogin']);
 
 //Validation, Session and Dashboard 
 Route::get('admin-home',[AdminController::class,'dashboard']);
-
 //Make Navbar, Logout feature , Category Page
 Route::get('admin-categories',[AdminController::class,'adminCategories']);
 //Admin-logout
@@ -26,3 +25,5 @@ Route::get('categories/delete/{id}',[AdminController::class,'categoryDeleted']);
 Route::get('add-quiz',[AdminController::class,'addQuiz']);
 //Add Mcq in Quiz
 Route::post('add-mcq',[AdminController::class,'addMcq']);
+//Finish Quiz
+Route::get('fenish-quiz',[AdminController::class,'finishQuiz']);

@@ -6,7 +6,7 @@
     <title>Home</title>
     @vite('resources/css/app.css')
 </head>
-<body class="font-serif bg-gray-100">
+<body class="font-serif bg-white">
     <x-navber name={{$name}}>
     </x-navber>
     <!-- Hero Section -->
@@ -131,14 +131,14 @@
     </section>
 
     <!-- Registation form -->
-     <section class="bg-gray-100 py-16">
-        <div class="max-w-lg mx-auto bg-white shadow-xl rounded-2xl p-8">
 
-            <h2 class="text-3xl font-bold text-center text-blue-700">
+     <section class=" py-16">
+         <h2 class="text-3xl font-bold text-center text-black mb-15">
                 🎓 Student Registration
             </h2>
 
-            <p class="text-center text-gray-500 mt-2">
+        <div class="max-w-lg mx-auto bg-white shadow-xl rounded-2xl p-8">
+            <p class="text-center text-gray-800 mt-2">
                 Register now and start your learning journey.
             </p>
 

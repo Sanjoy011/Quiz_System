@@ -12,14 +12,14 @@
     <x-navber name={{$name}}></x-navber> 
     <div class=" bg-gray-100 flex flex-col items-center min-h-screen  pt-12 ">
         <div class=" bg-white p-8 rounded-2xl shadow-lg w-full max-w-md ">
-            @if(!session('quizdetails'))
+            @if(!$quiz)
                 <h1 class="text-2xl text-center text-blue-800 font-medium font-serif">📝Add Quiz</h1>
                 <form action="/add-quiz" method="get" class="space-y-5">
                         <div>
-                            <textarea type="text" name="quiz" placeholder="Enter quiz name" class="w-full px-2 py-3  border border-gray-300 rounded-2xl outline-none text-base mt-6 font-serif"></textarea>
+                            <textarea type="text" name="quiz" placeholder="Enter quiz name" required class="w-full px-2 py-3  border border-gray-300 rounded-2xl outline-none text-base mt-6 font-serif"></textarea>
                         </div>
                         <div>
-                            <select type="text" name="category_id" class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base mt-2 font-serif">
+                            <select type="text" name="category_id" required class="w-full px-2 py-2  border border-gray-300 rounded-2xl outline-none text-base mt-2 font-serif">
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
@@ -28,7 +28,14 @@
                         <button type="submit" class="w-full text-center text-white text-xl bg-blue-500 rounded-2xl hover:bg-blue-600 py-1 font-normal font-serif">Add</button>
                 </form>
             @else
-                <span class="text-green-500 font-normal font-serif">Quiz : {{session('quizdetails')->name}}</span>
+                <span class="text-green-500 font-normal font-serif">Quiz : {{$quiz->name}}</span>
+                    <p class="text-green-500 font-normal font-serif"> Total Mcq: {{$totalMcqs}}
+                        @if($totalMcqs > 0)
+                            <a href="{{ route('show-quiz', $quiz->id) }}" class="text-orange-500 text-sm mt-0.5 font-serif hover:underline">
+                                Show MCQs
+                            </a>
+                        @endif
+                    </p>
                 <h1 class="text-2xl text-center text-orange-700 font-medium font-serif pt-3">📋 Add Questions</h1>
                 <form action="/add-mcq" method="post">
                     @csrf
@@ -64,18 +71,22 @@
                             <div class="text-red-600">{{$message}}</div>
                         @enderror
                         <div>
-                            <select type="text" name="currect_ans" class="w-full px-2 py-1  border border-gray-300 rounded-xl outline-none text-base mt-7 font-serif">
-                            
+                            <select name="currect_ans" required class="w-full px-2 py-1  border border-gray-300 rounded-xl outline-none text-base mt-7 font-serif">
                                <option value="">Select Right Answer</option>
-                               <option value="option-a">A</option>
-                               <option value="option-b">B</option>
-                               <option value="option-c">C</option>
-                               <option value="option-d">D</option>
+                               <option value="option-a" @selected(old('currect_ans') === 'option-a')>A</option>
+                               <option value="option-b" @selected(old('currect_ans') === 'option-b')>B</option>
+                               <option value="option-c" @selected(old('currect_ans') === 'option-c')>C</option>
+                               <option value="option-d" @selected(old('currect_ans') === 'option-d')>D</option>
                             </select>
-                        </div> 
-                        <button type="submit" name="submit" value="add-more" class="w-full text-center text-white text-base bg-blue-500 rounded-2xl hover:bg-blue-600 py-1.5 font-normal font-serif mt-7">Add More</button>      
-                        <button type="submit" name="submit" value="done" class="w-full text-center text-white text-base bg-green-500 rounded-2xl hover:bg-green-600 py-1.5 font-normal font-serif mt-3">Add & Submit</button>      
-                       <a href="/fenish-quiz" class="text-center text-white text-lg font-serif font-medium block bg-red-500 hover:bg-red-600 mt-4 py-1.5 rounded-2xl ">Finish Quix</a>      
+                        </div>
+                        @error('currect_ans')
+                            <div class="text-red-600">{{$message}}</div>
+                        @enderror 
+                        <button type="submit" name="submit" value="add-more" class="w-full text-center text-white text-base bg-blue-500 rounded-2xl hover:bg-blue-600 py-1.5 font-normal font-serif mt-7">Add More</button>   
+
+                        <button type="submit" name="submit" value="done" class="w-full text-center text-white text-base bg-green-500 rounded-2xl hover:bg-green-600 py-1.5 font-normal font-serif mt-3">Add & Submit</button>  
+
+                       <a href="/fenish-quiz" class="text-center text-white text-lg font-serif font-medium block bg-red-500 hover:bg-red-600 mt-4 py-1.5 rounded-2xl ">Finish Quiz</a>      
                 </form>
             @endif
         </div>

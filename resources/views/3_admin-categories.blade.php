@@ -47,21 +47,26 @@
             <ul class="border border-gray-300 font-serif">
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
-                        <li class="w-30">Sl. no</li>
-                        <li class="w-30">Category</li>
-                        <li class="w-10">Creator</li>
-                        <li class="w-30">Action</li> 
+                        <li class="w-50">Sl. no</li>
+                        <li class="w-100">Category_ID</li>
+                        <li class="w-75">Category</li>
+                        <li class="w-75">Creator</li>
+                        <li class="w-75">Action</li> 
                     </ul>
                 </li>
-                @foreach($categories as $categorie)
+                @foreach($categories as $key=>$categorie)
                 <li class="even:bg-gray-300 p-2">
                     <ul class="flex justify-around">
-                        <li class="w-30">{{$categorie->id}}</li>
-                        <li class="w-30">{{$categorie->name}}</li>
-                        <li class="w-10">{{$categorie->creator}}</li>
-                        <li class="w-25">
+                        <li class="w-75">{{$key+1}}</li>
+                        <li class="w-75">{{$categorie->id}}</li>
+                        <li class="w-75">{{$categorie->name}}</li>
+                        <li class="w-75">{{$categorie->creator}}</li>
+                        <li class="w-75 flex gap-4">
                             <a href="categories/delete/{{$categorie->id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#EA3323"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg>
+                            </a>
+                            <a href="show-list/{{$categorie->name}}/{{$categorie->id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#0000F5"><path d="M599-361q49-49 49-119t-49-119q-49-49-119-49t-119 49q-49 49-49 119t49 119q49 49 119 49t119-49Zm-187-51q-28-28-28-68t28-68q28-28 68-28t68 28q28 28 28 68t-28 68q-28 28-68 28t-68-28ZM220-270.5Q103-349 48-480q55-131 172-209.5T480-768q143 0 260 78.5T912-480q-55 131-172 209.5T480-192q-143 0-260-78.5ZM480-480Zm207 158q95-58 146-158-51-100-146-158t-207-58q-112 0-207 58T127-480q51 100 146 158t207 58q112 0 207-58Z"/></svg>
                             </a>
                             
                         </li>

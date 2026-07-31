@@ -81,14 +81,6 @@ class AdminController extends Controller
         }
     }
 
-    // Logout page
-    public function adminLogout()
-    {
-        Session::forget('user');
-        return redirect('admin-login');
-
-    }
-
     // Add Display Category
     public function addcategories(Request $request)
     {
@@ -199,15 +191,50 @@ class AdminController extends Controller
         return redirect('admin-home');
     }
 
-    public function showQuiz($id)
+    public function showQuiz($id,$quizname)
     {
         $adminUser = Session::get('user');
         $mcqs = Mcq::where('quiz_id', $id)->get();
         if ($adminUser) {
-            return view('5_show-quiz', ['name' => $adminUser->name, 'mcqs' => $mcqs]);
+            return view('5_show-quiz', ['name' => $adminUser->name, 'mcqs' => $mcqs,'quizname'=>$quizname]);
         } else {
             return redirect('admin-login');
         }
 
     }
+
+    public function quizListView($category,$id){ // $category => quiz category name || Quiz=>id
+        $adminUser = Session::get('user');
+
+        if($adminUser){
+            $quizdata=Result::where('category_id',$id)->get();
+            return view('6_quiz-list',['name'=>$adminUser->name,"quizdata"=>$quizdata,'category'=>$category]);
+        }else{
+            return redirect('admin-login');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // Logout page
+    public function adminLogout()
+    {
+        Session::forget('user');
+        return redirect('admin-login');
+
+    }
+
 }

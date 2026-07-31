@@ -1,4 +1,4 @@
-<nav class="bg-violet-900 shadow-md px-4 py-3 ">
+<nav class="bg-violet-600 shadow-md px-4 py-3 ">
         <div class="flex justify-between item-center">
             <div class="text-3xl text-white cursor-pointer font-serif">
                 🧠 Learners

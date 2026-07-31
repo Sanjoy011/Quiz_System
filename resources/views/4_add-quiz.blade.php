@@ -31,7 +31,8 @@
                 <span class="text-green-500 font-normal font-serif">Quiz : {{$quiz->name}}</span>
                     <p class="text-green-500 font-normal font-serif"> Total Mcq: {{$totalMcqs}}
                         @if($totalMcqs > 0)
-                            <a href="{{ route('show-quiz', $quiz->id) }}" class="text-orange-500 text-sm mt-0.5 font-serif hover:underline">
+                            <!-- <a href="{{ route('show-quiz', ['id' => $quiz->id, 'quizname' => $quiz->name]) }}" class="text-orange-500 text-sm mt-0.5 font-serif hover:underline"> -->
+                                <a href="/show-quiz/{{ $quiz->id }}/{{ $quiz->name }}" class="text-orange-500 text-sm mt-0.5 font-serif hover:underline">
                                 Show MCQs
                             </a>
                         @endif
@@ -95,7 +96,7 @@
 </body>
 <x-footer></x-footer>
 
-<!-- You use if(!session('quizdetails')) to show two different forms on the same page.
+<!-- You use if(!$quiz) to show two different forms on the same page.
 
 If there is no quiz in the Session, the user will see the Add Quiz form to create a new quiz.
 

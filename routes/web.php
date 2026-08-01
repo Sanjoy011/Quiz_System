@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 //User_Home-page
 Route::get(('/'),[UserController::class,'UserHome']); // main page
+//Show User Quiz list
+Route::get('user-show-list/{category}/{id}',[UserController::class,'userQuizListView']);
 
 // Admin Login with Model-View-Controller
 Route::view('admin-login', '1_admin-login');

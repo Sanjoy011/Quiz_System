@@ -2,7 +2,7 @@
     <div class="container mx-auto px-6">
 
         <!-- Logo & Description -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center">
             <h2 class="text-3xl font-bold text-white">
                 🧠 Learners
             </h2>
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Bottom -->
-        <div    
+        <div class="flex items-center justify-center mt-4 text-sm">    
             © 2026Sanjoy. All Rights Reserved.
         </div>
 

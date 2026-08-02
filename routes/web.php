@@ -10,8 +10,10 @@ Route::get(('/'), [UserController::class, 'UserHome']); // main page
 Route::get('user-show-list/{category}/{id}', [UserController::class, 'userQuizListView']);
 // User attempt mcq
 Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
-//User Sign-Up
-Route::view('user-signup',"9_user-signup");
+// User Sign-Up view
+Route::view('user-signup', '9_user-signup');
+// User Sign-Up controller
+Route::post('/user-signup', [UserController::class, 'userSignUp']);
 
 // Admin Login with Model-View-Controller
 Route::view('admin-login', '1_admin-login');

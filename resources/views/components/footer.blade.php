@@ -1,7 +1,7 @@
-<footer class="bg-slate-900 text-gray-300 mt-16">
+<footer class="bg-slate-900 text-gray-300 mt-16 ">
         <div class="max-w-7xl mx-auto px-6 py-12">
 
-            <div class="grid md:grid-cols-4 gap-10">
+            <div class="grid md:grid-cols-4 gap-10 font-serif">
 
                 <!-- Logo -->
                 <div>

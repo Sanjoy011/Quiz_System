@@ -1,4 +1,4 @@
-<footer class="bg-slate-900 text-gray-300 py-10 mt-12">
+<footer class="bg-slate-900 text-gray-300 py-10 font-serif">
     <div class="container mx-auto px-6">
 
         <!-- Logo & Description -->

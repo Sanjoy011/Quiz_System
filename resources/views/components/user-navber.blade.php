@@ -9,9 +9,10 @@
         <div class="space-x-8 flex item-center mr-10 mt-1 text-base">
             <a href="/" class="hover:text-green-400 transition">Home</a>
             <a href="" class="hover:text-green-400 transition">Categories</a>
-            <a href="" class="hover:text-green-400 transition">Login</a>
-            <a href="" class="hover:text-green-400 transition">Sign Up</a>
             <a href="" class="hover:text-green-400 transition">Blog</a>
+            <a href="/user-signup" class="hover:text-green-400 transition">Sign Up</a>
+            <a href="" class="hover:text-green-400 transition">Logout</a>
+            
         </div>
     </div>
 </nav>

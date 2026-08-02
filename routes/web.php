@@ -4,10 +4,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-//User_Home-page
-Route::get(('/'),[UserController::class,'UserHome']); // main page
-//Show User Quiz list
-Route::get('user-show-list/{category}/{id}',[UserController::class,'userQuizListView']);
+// User_Home-page
+Route::get(('/'), [UserController::class, 'UserHome']); // main page
+// Show User Quiz list
+Route::get('user-show-list/{category}/{id}', [UserController::class, 'userQuizListView']);
+// User attempt mcq
+Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
+//User Sign-Up
+Route::view('user-signup',"9_user-signup");
 
 // Admin Login with Model-View-Controller
 Route::view('admin-login', '1_admin-login');
@@ -30,6 +34,5 @@ Route::post('add-mcq', [AdminController::class, 'addMcq']);
 Route::get('fenish-quiz', [AdminController::class, 'finishQuiz']);
 // Show Quiz
 Route::get('show-quiz/{id}/{quizname}', [AdminController::class, 'showQuiz'])->name('show-quiz');
-//Quiz-list & Quiz view 
-Route::get('show-list/{category}/{id}',[AdminController::class,'quizListView']);
-
+// Quiz-list & Quiz view
+Route::get('show-list/{category}/{id}', [AdminController::class, 'quizListView']);

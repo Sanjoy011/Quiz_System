@@ -8,12 +8,39 @@ use Illuminate\Support\Facades\Route;
 Route::get(('/'), [UserController::class, 'UserHome']); // main page
 // Show User Quiz list
 Route::get('user-show-list/{category}/{id}', [UserController::class, 'userQuizListView']);
-// User attempt mcq
-Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
+//User-Catigory-list
+Route::get('/catigory',[UserController::class,'UserCatigories']);
+
+
+
 // User Sign-Up view
 Route::view('user-signup', '9_user-signup');
+//user Signup quiz start page
+Route::get('/user-signup-quiz', [UserController::class, 'userSignUpQuiz']);
 // User Sign-Up controller
 Route::post('/user-signup', [UserController::class, 'userSignUp']);
+
+
+
+//User Log-in view
+Route::view('/user-login','11_user-login');
+//User form login
+Route::post('user-login',[UserController::class,'userLogin']);
+//user login quiz start page
+Route::get('/user-login-quiz',[UserController::class, 'userLoginQuiz']);
+
+
+
+// User attempt mcq
+Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
+//User Start quiz 
+Route::get('/mcq/{id}/{name}',[UserController::class, 'UserStartMcq']);
+
+
+
+
+//User Session Logout
+Route::get('/user-logout',[UserController::class,'userLogout']);
 
 // Admin Login with Model-View-Controller
 Route::view('admin-login', '1_admin-login');

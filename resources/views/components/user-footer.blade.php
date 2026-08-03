@@ -14,11 +14,11 @@
 
         <!-- Navigation -->
         <div class="flex justify-center gap-5 mt-8 text-sm font-medium">
-            <a href="#" class="hover:text-green-400 transition">Home</a>
-            <a href="#" class="hover:text-green-400 transition">Categories</a>
-            <a href="#" class="hover:text-green-400 transition">Blog</a>
-            <a href="#" class="hover:text-green-400 transition">About</a>
-            <a href="#" class="hover:text-green-400 transition">Contact</a>
+            <a href="#" class="hover:text-yellow-500  transition">Home</a>
+            <a href="#" class="hover:text-yellow-500  transition">Categories</a>
+            <a href="#" class="hover:text-yellow-500   transition">Blog</a>
+            <a href="#" class="hover:text-yellow-500 transition">About</a>
+            <a href="#" class="hover:text-yellow-500 transition">Contact</a>
         </div>
 
         <!-- Social Icons -->

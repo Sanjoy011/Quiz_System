@@ -35,7 +35,8 @@ Route::get('/user-login-quiz',[UserController::class, 'userLoginQuiz']);
 Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
 //User Start quiz 
 Route::get('/mcq/{id}/{name}',[UserController::class, 'UserStartMcq']);
-
+//User Submit Quiz
+Route::post('/submit-next/{id}',[UserController::class, 'UserSubmitMcq']);
 
 
 

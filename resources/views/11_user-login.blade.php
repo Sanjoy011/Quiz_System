@@ -34,8 +34,8 @@
                     @enderror
                 </div>
                 <div>
-                    <input type="checkbox" class="" onclick="pwd.type = this.checked ? 'text' : 'password' ">
-                    <label for="check" class="text-green-700 text-sm">Show password</label>
+                    <input type="checkbox" class="" id="checkbox" onclick="pwd.type = this.checked ? 'text' : 'password' ">
+                    <label for="check" class="text-green-700 text-sm cursor-pointer" onclick="document.getElementById('checkbox').click() ">Show password</label>
                 </div>
                 <button class="w-full bg-blue-600 rounded-2xl py-1 hover:bg-blue-700 text-white text-lg ">
                     Login

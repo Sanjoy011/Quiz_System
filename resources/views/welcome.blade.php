@@ -9,11 +9,11 @@
 </head>
 <body class="font-serif">
     <x-user-navber></x-user-navber>
-    <div class="flex flex-col min-h-screen items-center bg-gray-100 ">
-        <h1 class="text-green-700 text-2xl mt-10 font-medium hover:text-cyan-500 cursor-pointer">Boost Your Skills</h1>
+    <div class="flex flex-col min-h-screen items-center bg-rose-50 ">
+        <h1 class="text-neutral-950 text-2xl mt-10 font-medium hover:text-cyan-500 cursor-pointer">Boost Your Skills</h1>
         <div class="w-full max-w-md">
             <div class="relative mt-8">
-                <input type="text" placeholder="Search quiz...." class="bg-white p-4 w-full rounded-xl outline-none border border-gray-300 shadow-xl">
+                <input type="text" placeholder="Search quiz...." class="bg-white p-4 w-full rounded-xl outline-none border border-neutral-300 shadow-xl">
                 <button class="absolute right-3 top-1 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="25px" fill="#000000"><path d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z"/></svg>
                 </button>
@@ -21,7 +21,7 @@
         </div>
         <div class="w-180  mt-10">
             <h1 class="font-medium text-xl text-amber-800 text-center">📚 Category List : </h1>
-            <ul class="border border-gray-300 mt-5">
+            <ul class="border border-blue-900 mt-5 rounded-2xl">
                 <li class="font-bold p-2">
                     <ul class="flex  justify-between">
                         <li class="w-40 pl-2">Sl no.</li>
@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 @foreach($Categories as $key=>$Categorie)
-                <li class="even:bg-gray-300 p-2 pl-9">
+                <li class="even:bg-orange-300 p-2 pl-9">
                     <ul class="flex justify-between">
                         <li class="w-40 ">{{$key+1}}</li>
                         <li class="w-60">{{$Categorie->name}}</li>

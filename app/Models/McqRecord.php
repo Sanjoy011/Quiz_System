@@ -8,4 +8,9 @@ class McqRecord extends Model
 {
     //
     public $timestamps = false;
+
+    function scopeWithMCQ($query){
+        return $query->join('mcqs','mcq_records.mcq_id','=','mcqs.id')
+        ->select('mcqs.question','mcq_records.*');
+    }
 }

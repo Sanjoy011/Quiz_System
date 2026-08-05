@@ -235,9 +235,9 @@ class UserController extends Controller
             $mcq_record->select_answer = $request->answer;
 
             if ($request->answer == Mcq::find($request->id)->currect_ans) {
-                $mcq_record->correct_answer = 'Correct';
+                $mcq_record->correct_answer = 1;
             } else {
-                $mcq_record->correct_answer = 'Wrong';
+                $mcq_record->correct_answer = 0;
             }
 
             $mcq_record->save();
@@ -257,6 +257,10 @@ class UserController extends Controller
         }
 
         $resultdata=McqRecord::WithMCQ()->where('record_id',$currentQuiz['recordId'])->get();
-        return view('13_user-quiz-result',['resultdata'=>$resultdata]);
+        $isCorrect=McqRecord::where([
+            ['record_id','=',$currentQuiz['recordId']],
+            ['correct_answer','=',1],
+        ])->count();
+        return view('13_user-quiz-result',['resultdata'=>$resultdata,"isCorrect"=>$isCorrect]);
     }
 }

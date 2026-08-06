@@ -12,7 +12,7 @@
             <a href="" class="hover:text-yellow-500  transition">Blog</a>
 
             @if(Session('user'))
-            <a href="/user-signup" class="hover:text-yellow-500  transition">Welcome, <span class="text-yellow-400 text-sm normal-case">{{Session('user')->name}}</span></a>
+            <a href="/user-details" class="hover:text-yellow-500  transition">Welcome, <span class="text-yellow-400 text-sm normal-case">{{Session('user')->name}}</span></a>
             <a href="/user-logout" class="hover:text-yellow-500  transition">Logout</a>
             @else
             <a href="user-signup" class="hover:text-yellow-500  transition">Signup</a>

@@ -50,6 +50,9 @@ Route::get('/submit-next/{id}', function ($id) {
     return redirect('/');
 });
 
+//User Details Page
+Route::get('/user-details',[UserController::class,'userDetails']);
+
 // User Session Logout
 Route::get('/user-logout', [UserController::class, 'userLogout']);
 

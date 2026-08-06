@@ -261,6 +261,38 @@ class UserController extends Controller
             ['record_id','=',$currentQuiz['recordId']],
             ['correct_answer','=',1],
         ])->count();
+
+        $recordResult = Record::find($currentQuiz['recordId']);
+        if($recordResult){
+            $recordResult->status=2;
+            $recordResult->update();
+        }
+
+        
         return view('13_user-quiz-result',['resultdata'=>$resultdata,"isCorrect"=>$isCorrect]);
     }
+
+    //User Details Page
+    public function userDetails(){
+        
+        $recordResult=Record::WithQuiz()->where('customer_id',Session('user')->id)->get();
+        if(! $recordResult){
+            return redirect('/');
+        }else{
+            return view('14_user-details',['recordResult'=>$recordResult]);
+            
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
 }
+

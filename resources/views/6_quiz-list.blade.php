@@ -10,7 +10,7 @@
     </head>
     <body>
         <x-navber name={{$name}}></x-navber>
-        <div class=" bg-gray-100 flex flex-col items-center max-h-screen  pt-3 ">
+        <div class=" bg-gray-100 flex flex-col items-center min-h-screen  pt-3 ">
             <div>
                 <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium font-serif">📚 Show Quiz: {{$category}} 
                     <a href="/admin-categories" class="text-red-500 text-sm mt-0.5 font-serif hover:underline">Back Quiz</a>

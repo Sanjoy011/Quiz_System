@@ -24,8 +24,8 @@
                     <div>
                         <label for="password" class="text-blue-800 mb-1 ps-2">Password:</label>
                         <input type="password" name="password" placeholder="Enter your password" class="w-full px-2 py-1.5 border border-gray-300 rounded-2xl outline-none text-base" id="pwd">
-                        <input type="checkbox" onclick="pwd.type = this.checked ? 'textname' : 'password'">
-                        <label for="password" class="text-green-600 leading-10 ps-1 text-sm font-medium">Show Password</label>
+                        <input type="checkbox" onclick="pwd.type = this.checked ? 'textname' : 'password'" id="id">
+                        <label for="password" class="text-green-600 leading-10 ps-1 text-sm font-medium cursor-pointer" onclick="document.getElementById('id').click() ">Show Password</label>
                         @error('password')
                         <div class="text-red-600">{{$message}}</div>
                         @enderror

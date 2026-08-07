@@ -44,24 +44,24 @@
         <div class="w-200">
             <h1 class="text-2xl text-amber-700 mb-5 mt-7 font-medium font-serif">📚 Category List: </h1>
             <!-- add categories table items -->
-            <ul class="border border-gray-300 font-serif">
+            <ul class="border border-gray-300 font-serif w-200">
                 <li class="p-2 font-bold">
                     <ul class="flex justify-around text-bold">
                         <li class="w-50">Sl. no</li>
-                        <li class="w-100">Category_ID</li>
-                        <li class="w-75">Category</li>
-                        <li class="w-75">Creator</li>
-                        <li class="w-75">Action</li> 
+                        <!-- <li class="w-100">Category_ID</li> -->
+                        <li class="w-50">Category</li>
+                        <li class="w-50">Creator</li>
+                        <li class="w-50">Action</li> 
                     </ul>
                 </li>
                 @foreach($categories as $key=>$categorie)
                 <li class="even:bg-gray-300 p-2">
                     <ul class="flex justify-around">
-                        <li class="w-75">{{$key+1}}</li>
-                        <li class="w-75">{{$categorie->id}}</li>
-                        <li class="w-75">{{$categorie->name}}</li>
-                        <li class="w-75">{{$categorie->creator}}</li>
-                        <li class="w-75 flex gap-4">
+                        <li class="w-50">{{$key+1}}</li>
+                        <!-- <li class="w-75">{{$categorie->id}}</li> -->
+                        <li class="w-50">{{$categorie->name}}</li>
+                        <li class="w-50">{{$categorie->creator}}</li>
+                        <li class="w-50 flex gap-4">
                             <a href="categories/delete/{{$categorie->id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#EA3323"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg>
                             </a>

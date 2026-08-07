@@ -11,6 +11,7 @@ use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Http\Middleware;
 
 class UserController extends Controller
 {
@@ -235,9 +236,9 @@ class UserController extends Controller
             $mcq_record->select_answer = $request->answer;
 
             if ($request->answer == Mcq::find($request->id)->currect_ans) {
-                $mcq_record->correct_answer = 1;
+                $mcq_record->currect_ans = 1;
             } else {
-                $mcq_record->correct_answer = 0;
+                $mcq_record->currect_ans = 0;
             }
 
             $mcq_record->save();
@@ -259,7 +260,7 @@ class UserController extends Controller
         $resultdata=McqRecord::WithMCQ()->where('record_id',$currentQuiz['recordId'])->get();
         $isCorrect=McqRecord::where([
             ['record_id','=',$currentQuiz['recordId']],
-            ['correct_answer','=',1],
+            ['currect_ans','=',1],
         ])->count();
 
         $recordResult = Record::find($currentQuiz['recordId']);
@@ -283,6 +284,12 @@ class UserController extends Controller
             
         }
         
+    }
+
+    //User search Quiz
+    public function searchQuiz(Request $request){
+        return$searchQuiz=Result::where('name','Like','%'.$request->name.'%')->get();
+        return view('15_user-search-quiz');
     }
 
 

@@ -24,7 +24,7 @@
                     <ul class="flex justify-between">
                         <li class="w-30 ">{{$key+1}}</li>
                         <li class="w-140">{{$item->question}}</li>
-                        @if($item->correct_answer)
+                        @if($item->currect_ans)
                         <li class="w-32 text-green-500 font-bold text-center mr-4">Correct</li>
                         @else
                         <li class="w-32 text-red-500 font-bold text-center mr-4">Incorrect</li>

@@ -12,16 +12,16 @@
     <x-user-navber></x-user-navber>
         <div class=" mt-10 flex flex-col min-h-screen items-center w-full ">
             <h1 class="font-medium text-xl text-amber-800 text-center">📚 Categories </h1>
-            <ul class="border border-gray-300 mt-5">
+            <ul class="border border-red-900 mt-5 rounded-2xl">
                 <li class="font-bold p-2">
                     <ul class="flex  justify-between">
                         <li class="w-40 pl-2">Sl no.</li>
-                        <li class="w-60 pl-4">Quiz Name</li>
+                        <li class="w-60 pl-4">Category </li>
                         <li class="w-40">Action</li>
                     </ul>
                 </li>
                 @foreach($Categories as $key=>$Categorie)
-                <li class="even:bg-gray-300 p-2 pl-9">
+                <li class="even:bg-yellow-300 p-2 pl-9">
                     <ul class="flex justify-between">
                         <li class="w-40 ">{{$key+1}}</li>
                         <li class="w-60">{{$Categorie->name}}</li>                     
@@ -35,6 +35,9 @@
                 </li>
                 @endforeach
             </ul>
+            <div class=" flex flex-row justify-between items-center mt-8 ">
+                {{$Categories->links()}}
+            </div>
         </div>
     </div>
    

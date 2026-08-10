@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 @foreach($mcqs as $key=>$mcq)
-                <li class="even:bg-gray-300 p-2">
+                <li class="even:bg-teal-300 p-2">
                     <ul class="flex justify-around">
                         <li class="w-30">{{$key+1}}</li>
                         <li class="w-170">{{$mcq->question}}</li>

@@ -23,7 +23,8 @@ Route::view('/user-login', '11_user-login');
 Route::post('user-login', [UserController::class, 'userLogin']);
 // user login quiz start page
 Route::get('/user-login-quiz', [UserController::class, 'userLoginQuiz']);
-
+//User Search Quiz
+Route::get('search-quiz',[UserController::class,'searchQuiz']);
 
 //User Middleware Group
 Route::middleware('CheckUserAuth')->group(function(){
@@ -55,9 +56,9 @@ Route::middleware('CheckUserAuth')->group(function(){
     Route::get('/user-mcq/{id}/{name}', [UserController::class, 'UserMcqAttempt']);
     // User Start quiz
     Route::get('/mcq/{id}/{name}', [UserController::class, 'UserStartMcq']);
-    //User Search Quiz
-    Route::get('search-quiz',[UserController::class,'searchQuiz']);
     
+    //User Certificate
+    Route::get('/certificate',[UserController::class,'UserCertificate']);
 
 });
 

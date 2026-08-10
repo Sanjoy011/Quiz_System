@@ -25,7 +25,6 @@
                             <li class="w-125 text-center">Name</li>
                             <li class="w-25 text-center">Total MCQ</li>
                             <li class="w-25 text-center">Action</li>
-                            
                         </ul>
                     </li>
                     @foreach($quizdata as $key=>$item)
@@ -36,8 +35,8 @@
                             <li class="w-125 text-center">{{$item->name}}</li>
                             <li class="w-25 text-center">{{$item->mcq_count}}</li>
                             <li class="w-25 mr-4 text-center">
-                                <a href="/user-mcq/{{$item->id}}/{{$item->name}}" class="text-green-700 font-bold text-sm">
-                                    Attempt Quix
+                                <a href="/user-mcq/{{$item->id}}/{{Str_replace(' ','-',$item->name)}}" class="text-green-700 font-bold text-sm">
+                                    Attempt Quiz
                                 </a>  
                             </li>
                         </ul>

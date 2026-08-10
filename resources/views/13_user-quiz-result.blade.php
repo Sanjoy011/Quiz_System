@@ -33,6 +33,11 @@
                 </li>
                 @endforeach
             </ul>
+            @if($isCorrect*100/count($resultdata)>30)
+            <div class="text-green-600 mt-7 font-bold w-full max-w-screen flex">
+                <a href="/certificate" class="px-80 hover:text-amber-600 ">View and download Certificate..</a>
+            </div>
+            @endif
     </div>
 </body>
 </html>

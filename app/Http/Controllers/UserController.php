@@ -17,9 +17,10 @@ class UserController extends Controller
 {
     public function UserHome()
     {
-        $category = Categorie::withCount('results')->get();
+        $category = Categorie::withCount('results')->take(6)->get();
+        $quizdata = Result::withCount('Mcq')->take(6)->get();
 
-        return view('welcome', ['Categories' => $category]);
+        return view('welcome', ['Categories' => $category,'quizdata'=> $quizdata]);
     }
 
     // Show User Quix list
@@ -108,7 +109,7 @@ class UserController extends Controller
     // User categories
     public function UserCatigories()
     {
-        $category = Categorie::get();
+        $category = Categorie::withCount('results')->paginate(4);
 
         return view('10_catigory-list', ['Categories' => $category]);
     }
@@ -288,10 +289,17 @@ class UserController extends Controller
 
     //User search Quiz
     public function searchQuiz(Request $request){
-        return$searchQuiz=Result::where('name','Like','%'.$request->name.'%')->get();
-        return view('15_user-search-quiz');
+        $searchQuiz=Result::withCount('Mcq')->where('name','Like','%'.$request->search.'%')->get();
+        return view('15_user-search-quiz',['searchQuiz'=>$searchQuiz,'quiz'=>$request->search]);
     }
 
+    //User Certificate
+    public function UserCertificate(){
+        $data=[];
+        $data['quiz']=Str_replace('-',' ',Session::get('currentQuiz')['quizName']);
+        $data['name']=Session::get('user')['name'];
+        return view('16_user-certificate',['data'=>$data]);
+    }
 
 
 

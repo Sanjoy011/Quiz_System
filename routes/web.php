@@ -59,6 +59,8 @@ Route::middleware('CheckUserAuth')->group(function(){
     
     //User Certificate
     Route::get('/certificate',[UserController::class,'UserCertificate']);
+    //User download-Certificate
+    Route::get('/download-certificate',[UserController::class,'UserDownloadCertificate']);
 
 });
 

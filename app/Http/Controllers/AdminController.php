@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Categorie;
 use App\Models\Mcq;
+use App\Models\Record;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -49,7 +50,6 @@ class AdminController extends Controller
             );
         } else {
             Session::put('user', $admin);
-
             return redirect('admin-home');
         }
     }
@@ -60,7 +60,8 @@ class AdminController extends Controller
         $adminUser = Session::get('user');
         // return $adminUser->name;  //just check it
         if ($adminUser) {
-            return view('2_adminDeshboard', ['name' => $adminUser->name]);  // Left side name = the variable name you want to use in the view Admin.blade.php
+            $user=Record::paginate(6);
+            return view('2_adminDeshboard', ['name' => $adminUser->name,'user'=>$user]);  // Left side name = the variable name you want to use in the view Admin.blade.php
         } else {
             return redirect('admin-login');
 
@@ -214,21 +215,6 @@ class AdminController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     // Logout page
     public function adminLogout()
     {

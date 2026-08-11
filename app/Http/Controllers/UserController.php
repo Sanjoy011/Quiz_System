@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Http\Middleware;
+use Spatie\Browsershot\Browsershot;
 
 class UserController extends Controller
 {
@@ -19,7 +20,6 @@ class UserController extends Controller
     {
         $category = Categorie::withCount('results')->take(6)->get();
         $quizdata = Result::withCount('Mcq')->take(6)->get();
-
         return view('welcome', ['Categories' => $category,'quizdata'=> $quizdata]);
     }
 
@@ -28,7 +28,6 @@ class UserController extends Controller
     {
         // You want to look inside the results table and pick only those rows whose category_id matches the given $id
         $quizdata = Result::withCount('Mcq')->where('category_id', $id)->get();
-
         return view('7_user-quiz-list', ['quizdata' => $quizdata, 'category' => $category]);
     }
 
@@ -82,7 +81,6 @@ class UserController extends Controller
             if (Session::has('quiz-url')) {
                 $url = Session::get('quiz-url');
                 Session::forget('quiz-url');
-
                 return redirect($url);
             }
 
@@ -94,7 +92,6 @@ class UserController extends Controller
     public function userSignUpQuiz()
     {
         Session::put('quiz-url', url()->previous());
-
         return view('9_user-signup');
     }
 
@@ -102,7 +99,6 @@ class UserController extends Controller
     public function userLogout()
     {
         Session::forget('user');
-
         return redirect('/');
     }
 
@@ -110,7 +106,6 @@ class UserController extends Controller
     public function UserCatigories()
     {
         $category = Categorie::withCount('results')->paginate(4);
-
         return view('10_catigory-list', ['Categories' => $category]);
     }
 
@@ -149,7 +144,6 @@ class UserController extends Controller
     public function userLoginQuiz()
     {
         Session::put('quiz-url', url()->previous());
-
         return view('11_user-login');
     }
 
@@ -299,6 +293,24 @@ class UserController extends Controller
         $data['quiz']=Str_replace('-',' ',Session::get('currentQuiz')['quizName']);
         $data['name']=Session::get('user')['name'];
         return view('16_user-certificate',['data'=>$data]);
+    }
+    //User Download Certificate
+    public function UserDownloadCertificate(){
+        $data=[];
+        $data['quiz']=Str_replace('-',' ',Session::get('currentQuiz')['quizName']);
+        $data['name']=Session::get('user')['name'];
+        $html= view('17_user-download-certificate',['data'=>$data])->render();
+        return response(
+            Browsershot::html($html)
+            ->format('A4')
+            ->landscape()
+            ->pdf()
+        )->withHeaders(
+            [
+                'Content-Type'=>"application/pdf",
+                'Content-disposition'=>"attachment;filename=certificate.pdf"
+            ]
+        );
     }
 
 
